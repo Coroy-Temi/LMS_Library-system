@@ -1,0 +1,1 @@
+using System.Windows.Controls;using LibraryManagementSystem.ViewModels;namespace LibraryManagementSystem.Views;public partial class LoansView:UserControl{public LoansView(LoansViewModel vm){InitializeComponent();DataContext=vm;}}

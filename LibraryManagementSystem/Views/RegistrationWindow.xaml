@@ -1,0 +1,42 @@
+<Window x:Class="LibraryManagementSystem.Views.RegistrationWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+ Title="Create a LibraryForge account" Icon="pack://application:,,,/Resources/Brand/libraryforge.ico"
+ Width="680" Height="760" MinHeight="680" WindowStartupLocation="CenterOwner"
+ Background="{DynamicResource MaterialDesign.Brush.Background}">
+ <ScrollViewer VerticalScrollBarVisibility="Auto">
+  <Grid Margin="48,36">
+   <StackPanel>
+    <Image Source="pack://application:,,,/Resources/Brand/libraryforge-primary-light.png" Height="66" HorizontalAlignment="Left" Stretch="Uniform" AutomationProperties.Name="LibraryForge logo"/>
+    <TextBlock Text="Create your member account" FontSize="28" FontWeight="SemiBold" Margin="0,28,0,4"/>
+    <TextBlock Text="Browse books, follow due dates, and view your reading history." Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" Margin="0,0,0,20"/>
+    <StackPanel>
+     <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Visible"/><Style.Triggers><DataTrigger Binding="{Binding IsVerificationStep}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+     <TextBox Text="{Binding FullName,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Full name" Margin="0,6" AutomationProperties.Name="Full name"/>
+     <TextBox Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Email address" Margin="0,6" AutomationProperties.Name="Email address"/>
+     <TextBox Text="{Binding Username,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Username" Margin="0,6" AutomationProperties.Name="Username"/>
+     <TextBox Text="{Binding Phone}" md:HintAssist.Hint="Phone (optional)" Margin="0,6" AutomationProperties.Name="Phone"/>
+     <TextBox Text="{Binding Address}" md:HintAssist.Hint="Address (optional)" Margin="0,6" AutomationProperties.Name="Address"/>
+     <PasswordBox x:Name="Password" md:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="0,6" AutomationProperties.Name="Password"/>
+     <PasswordBox x:Name="Confirmation" md:HintAssist.Hint="Confirm password" Style="{StaticResource MaterialDesignOutlinedPasswordBox}" Margin="0,6" AutomationProperties.Name="Confirm password"/>
+     <Button Content="CREATE ACCOUNT" Command="{Binding RegisterCommand}" Height="48" Margin="0,12,0,8" Background="#006D77" Foreground="White" IsDefault="True"/>
+     <Grid Margin="0,12"><Separator VerticalAlignment="Center"/><TextBlock Text="OR" Background="{DynamicResource MaterialDesign.Brush.Background}" Padding="12,0" HorizontalAlignment="Center" Foreground="#64748B"/></Grid>
+     <Button Command="{Binding GoogleRegisterCommand}" Height="48" Margin="0,4" Background="White" Foreground="#1F2937" BorderBrush="#CBD5E1" BorderThickness="1"><StackPanel Orientation="Horizontal"><md:PackIcon Kind="Google" Width="20" Height="20" Margin="0,0,10,0"/><TextBlock Text="Continue with Google" VerticalAlignment="Center"/></StackPanel></Button>
+     <Button Content="I ALREADY HAVE A VERIFICATION CODE" Command="{Binding ShowVerificationCommand}" Margin="0,10,0,0"/>
+    </StackPanel>
+    <StackPanel>
+     <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding IsVerificationStep}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+     <Border Background="#E6F4F5" CornerRadius="10" Padding="18" Margin="0,4,0,16"><StackPanel><md:PackIcon Kind="EmailCheckOutline" Foreground="#006D77" Width="32" Height="32"/><TextBlock Text="Confirm your email" FontSize="22" FontWeight="SemiBold" Foreground="#1F2937" Margin="0,8,0,4"/><TextBlock Text="Enter the six-digit code sent to your email. The code expires after 10 minutes." Foreground="#64748B" TextWrapping="Wrap"/></StackPanel></Border>
+     <TextBox Text="{Binding Email,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Registration email" Margin="0,6" AutomationProperties.Name="Registration email"/>
+     <TextBox Text="{Binding VerificationCode,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Six-digit verification code" MaxLength="6" FontSize="20" CharacterCasing="Upper" Margin="0,6" AutomationProperties.Name="Verification code"/>
+     <Button Content="VERIFY EMAIL" Command="{Binding VerifyEmailCommand}" Height="48" Margin="0,12,0,8" Background="#006D77" Foreground="White" IsDefault="True"/>
+     <Button Content="SEND A NEW CODE" Command="{Binding ResendCodeCommand}" Margin="0,4"/>
+     <Button Content="BACK TO REGISTRATION" Command="{Binding BackToRegistrationCommand}" Margin="0,4"/>
+    </StackPanel>
+    <TextBlock Text="{Binding Message}" Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" TextWrapping="Wrap" Margin="0,12,0,4" AutomationProperties.LiveSetting="Polite"/>
+    <Button Content="Cancel" IsCancel="True" Margin="0,10"/>
+   </StackPanel>
+  </Grid>
+ </ScrollViewer>
+</Window>

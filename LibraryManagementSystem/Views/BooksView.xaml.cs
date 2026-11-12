@@ -1,0 +1,1 @@
+using System.Windows.Controls;using LibraryManagementSystem.ViewModels;namespace LibraryManagementSystem.Views;public partial class BooksView:UserControl{public BooksView(BooksViewModel vm){InitializeComponent();DataContext=vm;vm.LoadCommand.Execute(null);}}

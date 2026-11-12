@@ -1,0 +1,21 @@
+<UserControl x:Class="LibraryManagementSystem.Views.SettingsView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes">
+ <UserControl.Resources><BooleanToVisibilityConverter x:Key="BoolToVisibility"/></UserControl.Resources>
+ <ScrollViewer VerticalScrollBarVisibility="Auto">
+  <StackPanel MaxWidth="900" HorizontalAlignment="Left">
+   <TextBlock Text="Settings" FontSize="28" FontWeight="SemiBold"/>
+   <TextBlock Text="Manage your personal profile, appearance, and account security." Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" Margin="0,5,0,20"/>
+   <Border Style="{StaticResource Card}" Visibility="{Binding HasMemberProfile,Converter={StaticResource BoolToVisibility}}">
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="180"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+     <StackPanel HorizontalAlignment="Center"><Ellipse Width="132" Height="132" Stroke="#00A8B5" StrokeThickness="3"><Ellipse.Fill><ImageBrush ImageSource="{Binding ProfileImagePath}" Stretch="UniformToFill"/></Ellipse.Fill></Ellipse><Button Content="CHANGE PHOTO" Command="{Binding ChangePhotoCommand}" Margin="0,14,0,0"/><TextBlock Text="PNG, JPEG or BMP · max 5 MB" TextAlignment="Center" Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" FontSize="10" Margin="0,6,0,0"/></StackPanel>
+     <StackPanel Grid.Column="1" Margin="22,0,0,0"><TextBlock Text="Member profile" FontSize="19" FontWeight="SemiBold"/><TextBlock Text="Your verified email is protected from direct changes." Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" Margin="0,4,0,12"/><TextBox Text="{Binding ProfileName,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Full name" Margin="0,5"/><TextBox Text="{Binding ProfileEmail}" IsReadOnly="True" md:HintAssist.Hint="Verified email" Margin="0,5"/><TextBox Text="{Binding ProfilePhone,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Phone" Margin="0,5"/><TextBox Text="{Binding ProfileAddress,UpdateSourceTrigger=PropertyChanged}" md:HintAssist.Hint="Address" Margin="0,5"/><Button Content="SAVE PROFILE" Command="{Binding SaveProfileCommand}" Width="150" Height="44" HorizontalAlignment="Left" Margin="0,12,0,0" Background="#006D77" Foreground="White"/></StackPanel>
+    </Grid>
+   </Border>
+   <Border Style="{StaticResource Card}" Margin="0,12,0,0"><StackPanel><TextBlock Text="Appearance" FontSize="19" FontWeight="SemiBold"/><CheckBox Content="Use dark mode" IsChecked="{Binding IsDarkMode}" Margin="0,14,0,0"/><TextBlock Text="Theme preferences are saved for this Windows account." Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" Margin="0,5,0,0"/></StackPanel></Border>
+   <Border Style="{StaticResource Card}" Margin="0,12,0,0"><StackPanel><TextBlock Text="Account security" FontSize="19" FontWeight="SemiBold"/><TextBlock Text="Change your local password or review how this account signs in." Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" Margin="0,5,0,12"/><Button Content="CHANGE PASSWORD" Command="{Binding ChangePasswordCommand}" Width="170" HorizontalAlignment="Left" Visibility="{Binding CanChangePassword,Converter={StaticResource BoolToVisibility}}"/><TextBlock Text="This account uses Google sign-in and does not have a local password." Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}"><TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Visibility" Value="Visible"/><Style.Triggers><DataTrigger Binding="{Binding CanChangePassword}" Value="True"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></TextBlock.Style></TextBlock></StackPanel></Border>
+   <TextBlock Text="{Binding Message}" Foreground="{DynamicResource MaterialDesign.Brush.Foreground.Secondary}" TextWrapping="Wrap" Margin="8,14" AutomationProperties.LiveSetting="Polite"/>
+  </StackPanel>
+ </ScrollViewer>
+</UserControl>

@@ -1,0 +1,67 @@
+# Build output
+**/bin/
+**/obj/
+artifacts/
+publish/
+
+# Visual Studio and user-specific settings
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local databases and runtime state
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+logs/
+*.log
+
+# Local secrets and developer overrides
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+.env
+.env.*
+!.env.example
+
+# LibraryForge user data and protected installation keys
+LibraryForge/Security/
+LibraryForge/ProfileImages/
+qr-key.bin
+installation-id.txt
+preferences.json
+
+# Generated reports, backups, imports, and temporary files
+Backups/
+Reports/
+Exports/
+*.bak
+*.tmp
+~$*
+
+# Architecture-document render intermediates
+**/.architecture_assets/
+**/.architecture_render*/
+**/.lo_profile*/
+**/.qa_render/
+
+# Test and coverage output
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local agent/editor metadata
+.agents/
+.codex/
+.git/ms-persist.xml
+.upload-git/

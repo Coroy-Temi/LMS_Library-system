@@ -1,0 +1,1 @@
+using System.Windows.Controls;using LibraryManagementSystem.ViewModels;namespace LibraryManagementSystem.Views;public partial class DashboardView:UserControl{public DashboardView(DashboardViewModel vm){InitializeComponent();DataContext=vm;}}
