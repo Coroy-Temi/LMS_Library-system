@@ -2,7 +2,7 @@
 
 LibraryForge is an offline-first library management system for Windows, built with WPF and .NET 8. It combines day-to-day catalog, membership, circulation, reservation, reporting, and administration workflows with a modern light/dark interface and installation-bound encrypted QR labels for physical inventory.
 
-![LibraryForge logo](LibraryManagementSystem/Resources/Brand/libraryforge-primary-light.png)
+
 
 ## Highlights
 
