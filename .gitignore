@@ -62,6 +62,5 @@ Desktop.ini
 
 # Local agent/editor metadata
 .agents/
-.codex/
 .git/ms-persist.xml
 .upload-git/
